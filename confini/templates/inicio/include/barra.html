@@ -1,0 +1,15 @@
+<style>
+    .brand-logo{
+        font-size: large;
+    }
+
+</style>
+<nav>
+    <div class="nav-wrapper cyan darken-1 ">
+        <a href="{% url 'usuarios:lista' %}" class="brand-logo center ">SkySoftNet</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="{% url 'usuarios:lista' %}">Usuarios</a></li>
+            <li><a href="{% url 'usuarios:user' %}">Tickets</a></li>
+        </ul>
+    </div>
+</nav>

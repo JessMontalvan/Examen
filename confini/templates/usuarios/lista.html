@@ -1,0 +1,60 @@
+{% extends "inicio/inicio.html" %}
+{% load static %}
+{% block stylesheets %}
+{{ block.super }}
+<link href="/static/estilos.css" rel="stylesheet">
+{% endblock stylesheets %}
+{% block content %}
+<style>
+
+th {
+    text-align: center;
+}
+
+h5 {
+    text-align: center;
+    padding: 30px;
+}
+
+</style>
+
+<h5>Lista de Usuarios</h5>
+    <table class=responsive-table">
+        <thead>
+            <tr class="titulos blue lighten-3">
+
+                <th>Nombre</th>
+                <th>Usuario</th>
+                <th>Contraseña</th>
+                <th>Edad</th>
+                <th>Teléfono</th>
+                <th>Opciones</th>
+
+
+            </tr>
+        </thead>
+
+        <tbody >
+            {% for e in usuario %}
+            <tr class="cuerpo  blue lighten-4">
+
+                <td>{{e.nombre}}</td>
+                <td>{{e.usuario}}</td>
+                <td>{{e.contraseña}}</td>
+                <td>{{e.edad}}</td>
+                <td>{{e.telefono}}</td>
+
+                <td><a href="{% url 'usuarios:editar' e.id %}"><button class="btn cyan darken-1">EDITAR</button></a>
+
+                    <a href="{% url 'usuarios:eliminar' e.id %}"><button class="btn cyan darken-1">ELIMINAR</button></a>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+    <br>
+    <a href="{% url 'usuarios:nuevoreg' %}"><button class="btn cyan darken-1">NUEVO REGISRO</button></a>
+    {% endblock %}

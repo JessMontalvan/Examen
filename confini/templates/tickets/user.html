@@ -1,0 +1,55 @@
+{% extends "inicio/inicio.html" %}
+{% load static %}
+{% block stylesheets %}
+{{ block.super }}
+<link href="/static/estilos.css" rel="stylesheet">
+{% endblock stylesheets %}
+{% block content %}
+<style>
+
+th {
+    text-align: center;
+}
+
+td,
+h5 {
+    text-align: center;
+    padding: 30px;
+}
+
+</style>
+
+<h5>Generar Ticket</h5>
+    <table class=responsive-table">
+        <thead>
+            <tr class="titulos blue lighten-3">
+
+                <th>Usuario</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Fin</th>
+
+            </tr>
+        </thead>
+
+        <tbody >
+            {% for e in usuario %}
+            <tr class="cuerpo  blue lighten-4">
+
+                <td>{{e.usuario}}</td>
+                <td>{{e.inicio}}</td>
+                <td>{{e.fin}}</td>
+
+                <td>
+                    <a href="{% url 'usuarios:eliminar' e.id %}"><button class="btn cyan darken-1">ELIMINAR</button></a>
+                    <a href="{% url 'usuarios:imprimir' e.id %}"><button class="btn cyan darken-2">Imprimir</button></a>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+    <br>
+    <a href="{% url 'usuarios:nuevotick' %}"><button class="btn cyan darken-1">NUEVO TICKET</button></a>
+    {% endblock %}

@@ -1,0 +1,10 @@
+{% extends "inicio/inicio.html" %}
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {% load crispy_forms_tags %}
+    {{ form|crispy }}
+    <button class="btn cyan darken-1" type="submit">Nuevo</button>
+</form>
+{% endblock content %}
